@@ -60,7 +60,7 @@ const deleteTransaction = async(req, res)=>{
     try {
         const {id} = req.params;
         if(isNaN(parseInt(id))){
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 error: true,
                 message: "Invalid transaction ID!"
