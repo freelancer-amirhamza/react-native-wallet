@@ -16,7 +16,7 @@ const database = async()=>{
         console.log("Database connected successfully!");
     } catch (error) {
         console.log("Error initializing DB", error.message);
-        process.exit(1)
+        process.exit(1) 
     }
 }
 database();

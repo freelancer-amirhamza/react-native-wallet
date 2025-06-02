@@ -3,14 +3,21 @@ import { COLORS } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: COLORS.background,
         padding: 20,
+        display:"flex",
         justifyContent: "center",
+        alignItems: "center",
+        width:"100%",
+        margin:"auto",
+        flex:1,
     },
     illustration: {
-        width: "100%",
+        width: 300,
         height: 310,
+        flexDirection:"row",
+        justifyContent: "center",
+        alignItems:"center",
         resizeMode: "contain",
     },
     title: {
@@ -29,6 +36,7 @@ export const styles = StyleSheet.create({
         borderColor: COLORS.border,
         fontSize: 16,
         color: COLORS.text,
+        minWidth:"100%"
     },
     errorInput: {
         borderColor: COLORS.expense,
@@ -40,6 +48,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         marginTop: 10,
         marginBottom: 20,
+        width:"100%"
     },
     buttonText: {
         color: COLORS.white,
