@@ -37,9 +37,7 @@ export default function Page() {
                 console.error(JSON.stringify(signInAttempt, null, 2))
             }
         } catch (err) {
-            // See https://clerk.com/docs/custom-flows/error-handling
-            // for more info on error handling
-            console.error(JSON.stringify(err, null, 2))
+            setError(err.errors?.[0]?.message)
         }
     }
 
@@ -47,7 +45,10 @@ export default function Page() {
         <KeyboardAwareScrollView style={{ flex: 1 }}
                     contentContainerStyle={{ flexGrow: 1 }}
                     enableOnAndroid={true}
-                    enableAutomaticScroll={true}>
+                    enableAutomaticScroll={true}
+                     extraScrollHeight={20}
+                    >
+                    
            <View style={styles.container} >
             <Image style={styles.illustration}
             source={require("../../assets/images/revenue-i4.png")} />

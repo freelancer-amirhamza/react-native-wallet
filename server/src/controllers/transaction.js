@@ -78,7 +78,7 @@ const deleteTransaction = async(req, res)=>{
         };
 
         res.status(201).json({
-            success: true,
+            success: true, 
             error: false,
             message: "The transaction deleted successfully!",
         })
