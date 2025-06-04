@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { Alert } from "react-native";
-const API_URL = "http://localhost:5000/api/transaction";
+const API_URL = "https://react-native-wallet-api.onrender.com/api/transaction";
 
 export const useTransactions = (userId) => {
     const [transactions, setTransactions] = useState([]);
