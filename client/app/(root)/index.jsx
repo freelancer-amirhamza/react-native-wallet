@@ -1,16 +1,21 @@
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link, router } from 'expo-router'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { SignOutButton } from '@/components/SignOutButton'
 import { useTransactions } from '../../hooks/useTransactions';
 import { useEffect } from 'react';
 import PageLoader from '../../components/PageLoader';
 import { styles } from "@/assets/styles/home.styles.js";
 import { Ionicons } from "@expo/vector-icons"
+import BalanceCard from '../../components/BalanceCard';
+import TransactionItem from '../../components/TransactionItem';
 export default function Page() {
     const { user } = useUser();
     const { transactions, summery, loading, laodData, deleteTransaction } = useTransactions(user?.id);
 
+    const handleDelete= async ()=>{
+        
+    }
     useEffect(() => { laodData() }, [laodData])
 
     if (loading) return <PageLoader />
@@ -22,7 +27,7 @@ export default function Page() {
                     <View style={styles.headerLeft}>
                         <Image
                             source={require("../../assets/images/logo.png")}
-                            style={styles.headerLogo}
+                            style={styles.headerLogo} 
                             resizeMode='contain'
                         />
                         <View style={styles.welcomeContainer} >
@@ -42,7 +47,20 @@ export default function Page() {
                         <SignOutButton />
                     </View>
                 </View>
+                <BalanceCard summery={summery}/>
+                <View style={styles.transactionsHeaderContainer}>
+                    <Text style={styles.sectionTitle}>Recent Transactions</Text>
+                </View>
             </View>
+
+            <FlatList
+            style={styles.transactionsList}
+            contentContainerStyle={styles.transactionsListContent}
+            data={transactions}
+            renderItem={({item})=>{
+                <TransactionItem item={item} onDelete={handleDelete} />
+            }}
+            />
 
         </View>
     )
