@@ -4,7 +4,8 @@ const cors = require("cors");
 require("./config/db.js")
 const transactionRouter = require("./routes/transaction-route.js");
 const rateLimiter = require("./middleware/rateLimiter.js");
-const { default: job } = require("./config/cron.js");
+const job = require("./config/cron.js");
+
 
 
 
@@ -21,6 +22,6 @@ app.get("/", (req, res)=>{
 app.get("/api/health", (req, res)=>{
     res.status(200).json({status:"ok"});
 })
-if(process.env.NODE_ENV === "production") job.start(); 
- 
+if(process.env.NODE_ENV === "production") job.start();
+
 module.exports = app;
