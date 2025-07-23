@@ -10,7 +10,7 @@ const job = new cron.CronJob("*/14 * * * *", function () {
     .on("error", (e) => console.error("Error while sending request", e));
 });
 
-module.exports = cron;
+module.exports = job;
 
 
 // CRON JOB EXPLANATION:
